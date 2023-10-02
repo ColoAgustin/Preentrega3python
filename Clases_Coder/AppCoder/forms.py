@@ -1,8 +1,9 @@
 from django import forms
+from .models import Pilotos
+from .models import Fechas
+class PilotosFormulario(forms.Form):
+    nombre  = forms.CharField()
+    apellido = forms.IntegerField()
 
-class CursoFormulario(forms.Form):
-    curso = forms.CharField()
-    camada = forms.IntegerField()
-
-class BuscaCursoForm(forms.Form):
-    curso = forms.CharField()
+class BuscaPilotosForm(forms.Form):
+    pilotos = forms.CharField()

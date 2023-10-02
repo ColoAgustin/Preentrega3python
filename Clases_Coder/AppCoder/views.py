@@ -1,28 +1,28 @@
 from django.shortcuts import render
-from .models import Curso
-from AppCoder.forms import CursoFormulario, BuscaCursoForm
+from .models import Pilotos
+from AppCoder.forms import PilotosFormulario, BuscaPilotosForm
 
-def inicio(request):
-    return render(request, "AppCoder/index.html")
+#def inicio(request):
+ #   return render(request, "AppCoder/index.html")
 
-def cursos(request):
-    return render(request, "AppCoder/cursos.html")
+def pilotos(request):
+    return render(request, "AppCoder/pilotoss.html")
 
-def profesores(request):
-    return render(request, "AppCoder/profesores.html")
+def fechas(request):
+    return render(request, "AppCoder/fechas.html")
 
-def estudiantes(request):
-    return render(request, "AppCoder/estudiantes.html")
+def news(request):
+    return render(request, "AppCoder/news.html")
 
-def entregables(request):
+#def entregables(request):
     return render(request, "AppCoder/entregables.html")
 
 def form_comun(request):
 
     if request.method == 'POST':
 
-        curso =  Curso(nombre=request.POST['curso'],camada=request.POST['camada'])
-        curso.save()
+        pilotos =  Pilotos(nombre=request.POST['pilotos'],camada=request.POST['apellido'])
+        pilotos.save()
 
         return render(request, "AppCoder/index.html")
 
@@ -30,29 +30,29 @@ def form_comun(request):
 
 def form_con_api(request):
     if request.method == "POST":
-        miFormulario = CursoFormulario(request.POST) # Aqui me llega la informacion del html
+        miFormulario = PilotosFormulario(request.POST) # Aqui me llega la informacion del html
         # print(miFormulario)
         if miFormulario.is_valid():
             informacion = miFormulario.cleaned_data
-            curso = Curso(nombre=informacion["curso"], camada=informacion["camada"])
-            curso.save()
+            pilotos = Pilotos(nombre=informacion["pilotos"], camada=informacion["apellido"])
+            pilotos.save()
             return render(request, "AppCoder/index.html")
     else:
-        miFormulario = CursoFormulario()
+        miFormulario = PilotosFormulario()
 
     return render(request, "AppCoder/form_con_api.html", {"miFormulario": miFormulario})
 
 def buscar_form_con_api(request):
     if request.method == "POST":
-        miFormulario = BuscaCursoForm(request.POST) # Aqui me llega la informacion del html
+        miFormulario = BuscaPilotosForm(request.POST) # Aqui me llega la informacion del html
 
         if miFormulario.is_valid():
             informacion = miFormulario.cleaned_data
             
-            cursos = Curso.objects.filter(nombre__icontains=informacion["curso"])
+            pilotos = Pilotos.objects.filter(nombre__icontains=informacion["pilotos"])
 
-            return render(request, "AppCoder/resultados_buscar_form.html", {"cursos": cursos})
+            return render(request, "AppCoder/resultados_buscar_form.html", {"pilotos": pilotos})
     else:
-        miFormulario = BuscaCursoForm()
+        miFormulario = BuscaPilotosForm()
 
     return render(request, "AppCoder/buscar_form_con_api.html", {"miFormulario": miFormulario})

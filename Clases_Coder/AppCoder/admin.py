@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import Profesor, Estudiante, Curso, Entregable
+from .models import  Pilotos, Fechas, Noticias
 
-admin.site.register(Profesor)
-admin.site.register(Estudiante)
-admin.site.register(Curso)
-admin.site.register(Entregable)
+#admin.site.register(Inicio)
+admin.site.register(Pilotos)
+admin.site.register(Fechas)
+admin.site.register(Noticias)
+
