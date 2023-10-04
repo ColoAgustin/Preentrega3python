@@ -5,8 +5,12 @@ from AppCoder.forms import PilotosFormulario, BuscaPilotosForm
 #def inicio(request):
  #   return render(request, "AppCoder/index.html")
 
+#index para la logica y proceso de formulario
+def index(request):
+    return render(request, 'index.html')
+
 def pilotos(request):
-    return render(request, "AppCoder/pilotoss.html")
+    return render(request, "AppCoder/pilotos.html")
 
 def fechas(request):
     return render(request, "AppCoder/fechas.html")
@@ -14,15 +18,18 @@ def fechas(request):
 def news(request):
     return render(request, "AppCoder/news.html")
 
-#def entregables(request):
-    return render(request, "AppCoder/entregables.html")
-
+#logica de formularios.-
 def form_comun(request):
 
     if request.method == 'POST':
-
-        pilotos =  Pilotos(nombre=request.POST['pilotos'],camada=request.POST['apellido'])
+        
+        pilotos =  Pilotos(nombre=request.POST['pilotos'],apellido=request.POST['apellido'])
         pilotos.save()
+        
+        fechas =  Fechas(nombre=request.POST['pilotos'],apellido=request.POST['apellido'])
+        fechas.save()
+
+        
 
         return render(request, "AppCoder/index.html")
 
@@ -34,8 +41,9 @@ def form_con_api(request):
         # print(miFormulario)
         if miFormulario.is_valid():
             informacion = miFormulario.cleaned_data
-            pilotos = Pilotos(nombre=informacion["pilotos"], camada=informacion["apellido"])
+            pilotos = Pilotos(nombre=informacion["pilotos"], apellido=informacion["apellido"])
             pilotos.save()
+            
             return render(request, "AppCoder/index.html")
     else:
         miFormulario = PilotosFormulario()

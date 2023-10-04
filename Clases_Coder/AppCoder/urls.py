@@ -22,7 +22,7 @@ urlpatterns = [
     path('news/', views.news, name="Noticias"),
     path('pilotos/', views.pilotos, name="Pilotos"),
     path('fechas/', views.fechas, name="Fechas"),
-    path('form-comun/', views.form_comun, name="Form-Comun"),
+    path('form-comun/piloto', views.form_comun, name="Form-Comun"),
     path('form-con-api/', views.form_con_api, name="Form-Con-Api"),
     path('buscar-form-con-api/', views.buscar_form_con_api, name="Buscar-Form-Con-Api")
 ]

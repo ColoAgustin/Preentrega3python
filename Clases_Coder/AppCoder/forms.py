@@ -1,6 +1,5 @@
 from django import forms
-from .models import Pilotos
-from .models import Fechas
+from .models import Pilotos, Noticias, Fechas
 class PilotosFormulario(forms.Form):
     nombre  = forms.CharField()
     apellido = forms.IntegerField()

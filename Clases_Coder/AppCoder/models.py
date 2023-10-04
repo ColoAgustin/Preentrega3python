@@ -6,7 +6,6 @@ class Noticias(models.Model):
 class Pilotos(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=20)
-    
 
 class Fechas(models.Model):
     fechas = models.CharField(max_length=40)
