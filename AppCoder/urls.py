@@ -19,10 +19,12 @@ from AppCoder import views
 
 urlpatterns = [
     #path('', views.inicio, name="Inicio"),
-    path('news/', views.news, name="Noticias"),
+    path('noticias/', views.news, name="Noticias"),
     path('pilotos/', views.pilotos, name="Pilotos"),
     path('fechas/', views.fechas, name="Fechas"),
-    path('form-comun/piloto', views.form_comun, name="Form-Comun"),
+    path('form-comun/pilotos', views.form_pilotos, name="Form-Comun"),
+    path('form-comun/news', views.form_news, name="Form-Comun"),
+    path('form-comun/fechas', views.form_fechas, name="Form-Comun"),
     path('form-con-api/', views.form_con_api, name="Form-Con-Api"),
     path('buscar-form-con-api/', views.buscar_form_con_api, name="Buscar-Form-Con-Api")
 ]

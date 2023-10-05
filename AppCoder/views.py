@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .models import Pilotos
+from .models import Pilotos, Noticias, Fechas
 from AppCoder.forms import PilotosFormulario, BuscaPilotosForm
+
 
 #def inicio(request):
  #   return render(request, "AppCoder/index.html")
@@ -19,17 +20,36 @@ def news(request):
     return render(request, "AppCoder/news.html")
 
 #logica de formularios.-
-def form_comun(request):
+def form_pilotos(request):
 
     if request.method == 'POST':
         
         pilotos =  Pilotos(nombre=request.POST['pilotos'],apellido=request.POST['apellido'])
-        pilotos.save()
-        
-        fechas =  Fechas(nombre=request.POST['pilotos'],apellido=request.POST['apellido'])
-        fechas.save()
+        pilotos.save()        
 
+        return render(request, "AppCoder/index.html")
+
+    return render(request,"AppCoder/form_comun.html")
+
+
+def form_news(request):
+
+    if request.method == 'POST':
         
+        noticias =  Noticias(news=request.POST['noticas'])
+        noticias.save()       
+
+        return render(request, "AppCoder/index.html")
+
+    return render(request,"AppCoder/form_comun.html")
+
+
+def form_fechas(request):
+
+    if request.method == 'POST':
+        
+        fechas =  Fechas(fecha=request.POST['fechas'],lugar=request.POST['fechas'])
+        fechas.save()       
 
         return render(request, "AppCoder/index.html")
 
@@ -37,7 +57,7 @@ def form_comun(request):
 
 def form_con_api(request):
     if request.method == "POST":
-        miFormulario = PilotosFormulario(request.POST) # Aqui me llega la informacion del html
+        miFormulario = PilotosFormulario(request.POST) # info del html result
         # print(miFormulario)
         if miFormulario.is_valid():
             informacion = miFormulario.cleaned_data
@@ -52,7 +72,7 @@ def form_con_api(request):
 
 def buscar_form_con_api(request):
     if request.method == "POST":
-        miFormulario = BuscaPilotosForm(request.POST) # Aqui me llega la informacion del html
+        miFormulario = BuscaPilotosForm(request.POST) # info del html result
 
         if miFormulario.is_valid():
             informacion = miFormulario.cleaned_data

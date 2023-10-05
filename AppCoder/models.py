@@ -8,9 +8,6 @@ class Pilotos(models.Model):
     apellido = models.CharField(max_length=20)
 
 class Fechas(models.Model):
-    fechas = models.CharField(max_length=40)
+    fecha = models.CharField(max_length=40)
     lugar = models.CharField(max_length=20)
     
-#class Inicio(models.Model):
- #   hola = models.CharField(max_length=40)
-  #  asadasa = models.CharField(max_length=20)

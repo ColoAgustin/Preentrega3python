@@ -6,4 +6,3 @@ admin.site.register(Pilotos)
 admin.site.register(Fechas)
 admin.site.register(Noticias)
 
-#adadadadadad
